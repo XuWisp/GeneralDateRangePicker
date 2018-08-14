@@ -12,9 +12,9 @@
 
 @interface DemoMainView () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *cellDataMArr;
-@property (nonatomic, strong) NSMutableArray *cellDetailMArr1;
-@property (nonatomic, strong) NSMutableArray *cellDetailMArr2;
+@property (nonatomic, strong) NSArray *cellDataMArr;
+@property (nonatomic, strong) NSArray *cellDetailMArr1;
+@property (nonatomic, strong) NSArray *cellDetailMArr2;
 
 @end
 
@@ -31,8 +31,9 @@
 }
 
 - (void)initView {
-    [self addSubview:self.tipLab];
     [self addSubview:self.setTV];
+    [self addSubview:self.showBtn];
+    [self addSubview:self.dzView];
 }
 
 #pragma mark - lazyload
@@ -51,38 +52,52 @@
     return _setTV;
 }
 
-- (NSMutableArray *)cellDataMArr {
+- (UIButton *)showBtn {
+    if (!_showBtn) {
+        _showBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _showBtn.frame = CGRectMake(0, 0, 0, 0);
+        [_showBtn setTitle:@"平身" forState:(UIControlStateNormal)];
+        [_showBtn addTarget:self action:@selector(showBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _showBtn;
+}
+
+- (DateZoneView *)dzView {
+    if (!_dzView) {
+        _dzView = [DateZoneView showOnView:self];
+    }
+    return _dzView;
+}
+
+- (NSArray *)cellDataMArr {
     if (!_cellDataMArr) {
-        NSMutableArray *mArr1 = [@[@"DataCount"] mutableCopy];
-        NSMutableArray *mArr2 = [@[@"BtnTColor", @"BtnTColorS", @"BtnFont", @"BtnFontS", @"BtnWidth"] mutableCopy];
-        NSMutableArray *mArr3 = [@[@"lineViewWidth", @"lineViewHeight", @"lineViewColor"] mutableCopy];
-        NSMutableArray *mArr4 = [@[@"sepLineViewWidth", @"sepLineViewHeight", @"sepLineViewColor"] mutableCopy];
-        NSMutableArray *mArr5 = [@[@"scrollView"] mutableCopy];
-        _cellDataMArr = [@[mArr1, mArr2, mArr3, mArr4, mArr5] mutableCopy];
+        _cellDataMArr = @[@[@"DataCount"],
+                          @[@"BtnTColor", @"BtnTColorS", @"BtnFont", @"BtnFontS", @"BtnWidth"],
+                          @[@"lineViewWidth", @"lineViewHeight", @"lineViewColor"],
+                          @[@"sepLineViewWidth", @"sepLineViewHeight", @"sepLineViewColor"],
+                          @[@"scrollView"]];
     }
     return _cellDataMArr;
 }
 
-- (NSMutableArray *)cellDetailMArr1 {
+- (NSArray *)cellDetailMArr1 {
     if (!_cellDetailMArr1) {
-        NSMutableArray *mArr1 = [@[@"->4"] mutableCopy];
-        NSMutableArray *mArr2 = [@[@"BlackColor", @"BlackColor", @"SysFont18", @"SysFont20", @"0.0f"] mutableCopy];
-        NSMutableArray *mArr3 = [@[@"BtnTextLength", @"4.0f", @"BlackColor"] mutableCopy];
-        NSMutableArray *mArr4 = [@[@"1.0f", @"30.0f", @"GrayColor"] mutableCopy];
-        NSMutableArray *mArr5 = [@[@"scrollView"] mutableCopy];
-        _cellDetailMArr1 = [@[mArr1, mArr2, mArr3, mArr4, mArr5] mutableCopy];
+        _cellDetailMArr1 = @[@[@"->4"],
+                             @[@"BlackColor", @"BlackColor", @"SysFont18", @"SysFont20", @"0.0f"],
+                             @[@"BtnTextLength", @"4.0f", @"BlackColor"],
+                             @[@"1.0f", @"30.0f", @"GrayColor"],
+                             @[@"scrollView"]];
     }
     return _cellDetailMArr1;
 }
 
-- (NSMutableArray *)cellDetailMArr2 {
+- (NSArray *)cellDetailMArr2 {
     if (!_cellDetailMArr2) {
-        NSMutableArray *mArr1 = [@[@"->9"] mutableCopy];
-        NSMutableArray *mArr2 = [@[@"OrangeColor", @"RedColor", @"SysFont18Blod", @"SysFont20Blod", @"BtnTextLength+20.0f"] mutableCopy];
-        NSMutableArray *mArr3 = [@[@"50", @"10.0f", @"CyanColor"] mutableCopy];
-        NSMutableArray *mArr4 = [@[@"5.0f", @"50.0f", @"ClearColor"] mutableCopy];
-        NSMutableArray *mArr5 = [@[@"scrollView"] mutableCopy];
-        _cellDetailMArr2 = [@[mArr1, mArr2, mArr3, mArr4, mArr5] mutableCopy];
+        _cellDetailMArr2 = @[@[@"->9"],
+                             @[@"OrangeColor", @"RedColor", @"SysFont18Blod", @"SysFont20Blod", @"BtnTextLength+20.0f"],
+                             @[@"50", @"10.0f", @"CyanColor"],
+                             @[@"5.0f", @"50.0f", @"ClearColor"],
+                             @[@"scrollView"]];
     }
     return _cellDetailMArr2;
 }
@@ -131,13 +146,41 @@
     switch (indexPath.section) {
         case 0: { //
             switch (indexPath.row) {
-                case 0:
+                case 0: {
                     if (isNormal) {
-
+                        
                     }else {
-
+                        
                     }
+                    break;}
+                case 1: {
+                    if (isNormal) {
+                        
+                    }else {
+                        
+                    }
+                    break;}
+                    
+                default:
                     break;
+            }
+            break;}
+        case 1: { //
+            switch (indexPath.row) {
+                case 0: {
+                    if (isNormal) {
+                        
+                    }else {
+                        
+                    }
+                    break;}
+                case 1: {
+                    if (isNormal) {
+                        
+                    }else {
+                        
+                    }
+                    break;}
                     
                 default:
                     break;
@@ -150,6 +193,9 @@
 
 #pragma mark - action
 
+- (void)showBtnClick {
+    
+}
 
 #pragma mark - other
 

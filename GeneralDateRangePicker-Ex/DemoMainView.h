@@ -12,8 +12,9 @@
 
 @interface DemoMainView : UIView
 
-@property (nonatomic, strong) DateZoneView *dateZoneV;
+@property (nonatomic, strong) DateZoneView *dzView;
 @property (nonatomic, strong) UILabel *tipLab;
 @property (nonatomic, strong) UITableView *setTV;
+@property (nonatomic, strong) UIButton *showBtn;
 
 @end
