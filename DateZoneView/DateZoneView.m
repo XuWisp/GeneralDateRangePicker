@@ -7,6 +7,8 @@
 //
 
 #import "DateZoneView.h"
+#import "UIView+WispFrame.h"
+#import "UILabel+WispLabel.h"
 
 @implementation DateZoneView
 
@@ -14,7 +16,7 @@
 
 + (instancetype)showOnView:(UIView *)view
 {
-    DateZoneView *dzView = [[DateZoneView alloc] initWithFrame:(CGRectMake(kImgFit(20), kImgFit(200), view.width-kImgFit(20*2), 352+kImgFit(150)))];
+    DateZoneView *dzView = [[DateZoneView alloc] initWithFrame:(CGRectMake(kImgFit(20), kImgFit(200), view.frame.size.width-kImgFit(20*2), 352+kImgFit(150)))];
     dzView.mask = [[UIView alloc] initWithFrame:view.bounds];
     dzView.mask.backgroundColor = [UIColor blackColor];
     dzView.mask.alpha = 0.3;
@@ -36,7 +38,7 @@
     [self addSubview:self.beginPicker];
     [self addSubview:self.endPicker];
     UIView *lineV = [[UIView alloc] initWithFrame:(CGRectMake(self.beginPicker.right, 0, kImgFit(2), self.beginPicker.height))];
-    lineV.backgroundColor = kTopView_OrangeColor;
+    lineV.backgroundColor = [UIColor orangeColor];
     [self addSubview:lineV];
     [self addSubview:self.toLab];
     [self addSubview:self.qishiLab];
@@ -86,14 +88,14 @@
         _endPicker = [SZCalendarPicker showOnView:self];
         _endPicker.today = [NSDate date];
         _endPicker.date = _endPicker.today;
-        _endPicker.frame = CGRectMake(self.frame.size.width/2+kImgFit(1), 0, self.width/2-kImgFit(1), 352);
+        _endPicker.frame = CGRectMake(self.frame.size.width/2+kImgFit(1), 0, self.frame.size.width/2-kImgFit(1), 352);
     }
     return _endPicker;
 }
 
 - (UILabel *)qishiLab {
     if (!_qishiLab) {
-        _qishiLab = [UILabel commonLabelWithFrame:(CGRectMake(0, self.endPicker.bottom, self.width/2, kImgFit(50)))
+        _qishiLab = [UILabel commonLabelWithFrame:(CGRectMake(0, self.endPicker.bottom, self.frame.size.width/2, kImgFit(50)))
                                              text:@"起始日期" color:kCSM444444TextColor font:kCSMTipFont28
                                     textAlignment:(NSTextAlignmentCenter)];
     }
@@ -102,7 +104,7 @@
 
 - (UILabel *)jiezhiLab {
     if (!_jiezhiLab) {
-        _jiezhiLab = [UILabel commonLabelWithFrame:(CGRectMake(self.width/2, self.endPicker.bottom, self.width/2, kImgFit(50)))
+        _jiezhiLab = [UILabel commonLabelWithFrame:(CGRectMake(self.frame.size.width/2, self.endPicker.bottom, self.frame.size.width/2, kImgFit(50)))
                                              text:@"截止日期" color:kCSM444444TextColor font:kCSMTipFont28
                                     textAlignment:(NSTextAlignmentCenter)];
     }
@@ -112,17 +114,16 @@
 
 - (UILabel *)toLab {
     if (!_toLab) {
-        _toLab = [UILabel commonLabelWithFrame:(CGRectMake(0, self.endPicker.bottom, self.width, kImgFit(50)))
+        _toLab = [UILabel commonLabelWithFrame:(CGRectMake(0, self.endPicker.bottom, self.frame.size.width, kImgFit(50)))
                                           text:@"-" color:kCSM444444TextColor font:kCSMTipFont28
                                  textAlignment:(NSTextAlignmentCenter)];
-        _toLab.backgroundColor = kTitleBGColor;
     }
     return _toLab;
 }
 
 - (UILabel *)beginLab {
     if (!_beginLab) {
-        _beginLab = [UILabel commonLabelWithFrame:(CGRectMake(-kImgFit(30), self.endPicker.bottom, self.width/2, kImgFit(50)))
+        _beginLab = [UILabel commonLabelWithFrame:(CGRectMake(-kImgFit(30), self.endPicker.bottom, self.frame.size.width/2, kImgFit(50)))
                                           text:@"" color:kCSM444444TextColor font:kCSMTipFont28
                                  textAlignment:(NSTextAlignmentRight)];
     }
@@ -131,7 +132,7 @@
 
 - (UILabel *)endLab {
     if (!_endLab) {
-        _endLab = [UILabel commonLabelWithFrame:(CGRectMake(self.width/2+kImgFit(30), self.endPicker.bottom, self.width/2, kImgFit(50)))
+        _endLab = [UILabel commonLabelWithFrame:(CGRectMake(self.frame.size.width/2+kImgFit(30), self.endPicker.bottom, self.frame.size.width/2, kImgFit(50)))
                                           text:@"" color:kCSM444444TextColor font:kCSMTipFont28
                                  textAlignment:(NSTextAlignmentLeft)];
     }
@@ -139,11 +140,13 @@
 }
 
 - (UIButton *)cancelBtn {
-    if (!_cancelBtn) {
-        _cancelBtn = [UIButton commonBtnWithType:(UIButtonTypeCustom)
-                                           Frame:(CGRectMake(0, self.toLab.bottom, self.width/2, kImgFit(100)))
-                                            text:@"取消" TColor:kCSM444444TextColor font:kCSMTipFont28
-                                            NImg:nil SImg:nil BNImg:nil BSImg:nil color:[UIColor whiteColor]];
+    if (!_cancelBtn) {\
+        _cancelBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _cancelBtn.frame = (CGRectMake(0, self.toLab.bottom, self.frame.size.width/2, kImgFit(100)));
+        [_cancelBtn setTitle:@"取消" forState:(UIControlStateNormal)];
+        [_cancelBtn setTitleColor:kCSM444444TextColor forState:(UIControlStateNormal)];
+        _cancelBtn.titleLabel.font = kCSMTipFont28;
+        _cancelBtn.backgroundColor = [UIColor whiteColor];
         [_cancelBtn addTarget:self action:@selector(hide) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _cancelBtn;
@@ -152,10 +155,12 @@
 
 - (UIButton *)confirmBtn {
     if (!_confirmBtn) {
-        _confirmBtn = [UIButton commonBtnWithType:(UIButtonTypeCustom)
-                                            Frame:(CGRectMake(0, self.toLab.bottom, self.width, kImgFit(100)))
-                                             text:@"确定" TColor:[UIColor whiteColor] font:kCSMTipFont28
-                                             NImg:nil SImg:nil BNImg:nil BSImg:nil color:kTopView_OrangeColor];
+        _confirmBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _confirmBtn.frame = (CGRectMake(0, self.toLab.bottom, self.frame.size.width, kImgFit(100)));
+        [_confirmBtn setTitle:@"确定" forState:(UIControlStateNormal)];
+        [_confirmBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+        _confirmBtn.titleLabel.font = kCSMTipFont28;
+        _confirmBtn.backgroundColor = [UIColor orangeColor];
     }
     return _confirmBtn;
 }

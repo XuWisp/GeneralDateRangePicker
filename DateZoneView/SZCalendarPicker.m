@@ -10,6 +10,7 @@
 #import "SZCalendarCell.h"
 #import "DateZoneCollectionViewCell.h"
 #import "UIColor+ZXLazy.h"
+#import "UIView+WispFrame.h"
 
 NSString *const SZCalendarCellIdentifier = @"cell";
 NSString *const dateCellIdentifier = @"datecell";
@@ -40,7 +41,7 @@ NSString *const dateCellIdentifier = @"datecell";
 {
     [super awakeFromNib];
     [_collectionView registerClass:[SZCalendarCell class] forCellWithReuseIdentifier:SZCalendarCellIdentifier];
-    self.OrangeBGV.backgroundColor = kTopView_OrangeColor;
+    self.OrangeBGV.backgroundColor = [UIColor orangeColor];
 //    [_collectionView registerClass:[DateZoneCollectionViewCell class] forCellWithReuseIdentifier:dateCellIdentifier];
      _weekDayArray = @[@"日",@"一",@"二",@"三",@"四",@"五",@"六"];
 }
@@ -142,7 +143,7 @@ NSString *const dateCellIdentifier = @"datecell";
     SZCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SZCalendarCellIdentifier forIndexPath:indexPath];
     if (indexPath.section == 0) {
         [cell.dateLabel setText:_weekDayArray[indexPath.row]];
-        [cell.dateLabel setTextColor:kTopView_OrangeColor];
+        [cell.dateLabel setTextColor:[UIColor orangeColor]];
     } else {
         NSInteger daysInThisMonth = [self totaldaysInMonth:_date];
         NSInteger firstWeekday = [self firstWeekdayInThisMonth:_date];

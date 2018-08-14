@@ -24,6 +24,9 @@
 		5EA2E2472122AE5000AF998D /* bt_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2E23F2122AE5000AF998D /* bt_next@2x.png */; };
 		5EA2E2482122AE5000AF998D /* SZCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2E2402122AE5000AF998D /* SZCalendarCell.m */; };
 		5EA2E2492122AE5000AF998D /* SZCalendarPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2E2412122AE5000AF998D /* SZCalendarPicker.xib */; };
+		5EA2E24C2122AF9E00AF998D /* DemoMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2E24B2122AF9E00AF998D /* DemoMainView.m */; };
+		5EA2E24F2122B34000AF998D /* UIView+WispFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2E24E2122B33F00AF998D /* UIView+WispFrame.m */; };
+		5EA2E2522122B55500AF998D /* UILabel+WispLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2E2512122B55500AF998D /* UILabel+WispLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,12 @@
 		5EA2E23F2122AE5000AF998D /* bt_next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_next@2x.png"; sourceTree = "<group>"; };
 		5EA2E2402122AE5000AF998D /* SZCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCalendarCell.m; sourceTree = "<group>"; };
 		5EA2E2412122AE5000AF998D /* SZCalendarPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SZCalendarPicker.xib; sourceTree = "<group>"; };
+		5EA2E24A2122AF9E00AF998D /* DemoMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoMainView.h; sourceTree = "<group>"; };
+		5EA2E24B2122AF9E00AF998D /* DemoMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMainView.m; sourceTree = "<group>"; };
+		5EA2E24D2122B33F00AF998D /* UIView+WispFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WispFrame.h"; sourceTree = "<group>"; };
+		5EA2E24E2122B33F00AF998D /* UIView+WispFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WispFrame.m"; sourceTree = "<group>"; };
+		5EA2E2502122B55500AF998D /* UILabel+WispLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WispLabel.h"; sourceTree = "<group>"; };
+		5EA2E2512122B55500AF998D /* UILabel+WispLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WispLabel.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +134,8 @@
 		5EA2E1FD2122AC2600AF998D /* GeneralDateRangePicker-Ex */ = {
 			isa = PBXGroup;
 			children = (
+				5EA2E24A2122AF9E00AF998D /* DemoMainView.h */,
+				5EA2E24B2122AF9E00AF998D /* DemoMainView.m */,
 				5EA2E1FE2122AC2600AF998D /* AppDelegate.h */,
 				5EA2E1FF2122AC2600AF998D /* AppDelegate.m */,
 				5EA2E2012122AC2600AF998D /* ViewController.h */,
@@ -172,6 +183,10 @@
 				5EA2E2412122AE5000AF998D /* SZCalendarPicker.xib */,
 				5EA2E2372122AE5000AF998D /* UIColor+ZXLazy.h */,
 				5EA2E23B2122AE5000AF998D /* UIColor+ZXLazy.m */,
+				5EA2E24D2122B33F00AF998D /* UIView+WispFrame.h */,
+				5EA2E24E2122B33F00AF998D /* UIView+WispFrame.m */,
+				5EA2E2502122B55500AF998D /* UILabel+WispLabel.h */,
+				5EA2E2512122B55500AF998D /* UILabel+WispLabel.m */,
 			);
 			path = DateZoneView;
 			sourceTree = "<group>";
@@ -323,9 +338,12 @@
 				5EA2E2452122AE5000AF998D /* SZCalendarPicker.m in Sources */,
 				5EA2E2422122AE5000AF998D /* DateZoneCollectionViewCell.m in Sources */,
 				5EA2E2112122AC2800AF998D /* main.m in Sources */,
+				5EA2E24F2122B34000AF998D /* UIView+WispFrame.m in Sources */,
 				5EA2E2432122AE5000AF998D /* DateZoneView.m in Sources */,
+				5EA2E24C2122AF9E00AF998D /* DemoMainView.m in Sources */,
 				5EA2E2442122AE5000AF998D /* UIColor+ZXLazy.m in Sources */,
 				5EA2E2482122AE5000AF998D /* SZCalendarCell.m in Sources */,
+				5EA2E2522122B55500AF998D /* UILabel+WispLabel.m in Sources */,
 				5EA2E2002122AC2600AF998D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

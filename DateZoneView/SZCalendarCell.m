@@ -23,7 +23,7 @@
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     if (selected) {
-        self.backgroundColor = kLeftView_PaleYellowColor;
+        self.backgroundColor = [UIColor yellowColor];
     }else {
         self.backgroundColor = [UIColor whiteColor];
     }
